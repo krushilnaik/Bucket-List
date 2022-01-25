@@ -7,7 +7,11 @@
   },
   "dependencies": {
     "@mantine/core": "^3.6.2",
+    "@mantine/dates": "^3.6.2",
     "@mantine/hooks": "^3.6.2",
+    "@mantine/notifications": "^3.6.2",
+    "@mantine/rte": "^3.6.2",
+    "dayjs": "^1.10.7",
     "express": "^4.17.2",
     "mongodb": "^4.3.1",
     "mongoose": "^6.1.8",
