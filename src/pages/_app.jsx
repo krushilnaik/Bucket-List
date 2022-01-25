@@ -1,5 +1,7 @@
-import Head from 'next/head'
-import '../styles/globals.css'
+import React from 'react';
+import Head from 'next/head';
+import '../styles/globals.css';
+import Nav from '../components/Nav';
 
 export default function MyApp({ Component, pageProps }) {
   return (
@@ -31,7 +33,8 @@ export default function MyApp({ Component, pageProps }) {
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#317EFB" />
       </Head>
+      <Nav />
       <Component {...pageProps} />
     </>
-  )
+  );
 }
