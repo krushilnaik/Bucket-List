@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "node server.js"
+    "start": "node server/server.js"
   },
   "dependencies": {
     "@mantine/core": "^3.6.2",
