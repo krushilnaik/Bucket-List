@@ -1,0 +1,21 @@
+.wish {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	flex-shrink: 0;
+	background-color: lighten($color: lightblue, $amount: 5);
+	border-radius: 7px;
+	padding: 20px;
+	list-style: none;
+	user-select: none;
+
+	> svg {
+		width: 25px;
+		height: 25px;
+		fill: lighten($color: black, $amount: 25);
+		transform: rotate(90deg);
+		cursor: grab;
+	}
+}

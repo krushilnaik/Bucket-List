@@ -1,10 +1,9 @@
 import "../styles/globals.scss";
-import type { AppProps } from "next/app";
-import { AnimateSharedLayout, motion } from "framer-motion";
+import { AnimateSharedLayout, LayoutGroup, motion } from "framer-motion";
 import Nav from "../components/Nav";
 import { MantineProvider } from "@mantine/core";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }) {
 	const frontPaths = [
 		"M 0,640 V 608.8 C 0,608.8 17.8,591 53.41,597.3 89.01,603.5 89.9,588.3 119.2,591.9 148.6,595.4 162.9,618.6 206.5,600.8 250.1,583 264,580.4 301.7,594.7 339.5,608.9 360,598.2 360,598.2 V 640 Z",
 		"M 0,640 V 17.98 C 0,17.98 11.86,22.7 34.72,16.94 61.65,10.15 89.01,22.23 118.3,25.83 147.7,29.44 168.6,22.09 215.4,16.89 255.4,12.44 274.3,21.49 298.8,22.46 342,24.16 360,11.75 360,11.75 V 640 Z",
@@ -17,43 +16,42 @@ function MyApp({ Component, pageProps }: AppProps) {
 	];
 
 	return (
-		<AnimateSharedLayout>
-			<MantineProvider theme={{ colorScheme: "dark" }}>
-				<div className="container">
-					<Nav />
-					<div className="content">
-						<Component {...pageProps} />
-					</div>
+		<MantineProvider theme={{ colorScheme: "dark" }}>
+			<div className="container">
+				<Nav />
+				<div className="content">
+					<Component {...pageProps} />
 				</div>
-				<svg
-					viewBox="0 0 360 640"
-					preserveAspectRatio="none"
-					height="95vh"
-					width="100vw"
-					aria-hidden
-				>
-					<motion.path
-						fill="#09f"
-						fillOpacity={0.25}
-						d={backPaths[1]}
-						animate={{ d: backPaths }}
-						transition={{
-							duration: 0.85,
-							easings: ["easeIn"],
-						}}
-					/>
-					<motion.path
-						fill="#09f"
-						fillOpacity={0.5}
-						animate={{ d: frontPaths }}
-						transition={{
-							easings: ["linear", "easeOut"],
-							times: [0, 0.65, 1],
-						}}
-					/>
-				</svg>
-			</MantineProvider>
-		</AnimateSharedLayout>
+			</div>
+			<svg
+				className="background"
+				viewBox="0 0 360 640"
+				preserveAspectRatio="none"
+				height="95vh"
+				width="100vw"
+				aria-hidden
+			>
+				<motion.path
+					fill="#09f"
+					fillOpacity={0.25}
+					d={backPaths[1]}
+					animate={{ d: backPaths }}
+					transition={{
+						duration: 0.85,
+						easings: ["easeIn"],
+					}}
+				/>
+				<motion.path
+					fill="#09f"
+					fillOpacity={0.5}
+					animate={{ d: frontPaths }}
+					transition={{
+						easings: ["linear", "easeOut"],
+						times: [0, 0.65, 1],
+					}}
+				/>
+			</svg>
+		</MantineProvider>
 	);
 }
 

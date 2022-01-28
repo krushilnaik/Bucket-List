@@ -3,6 +3,10 @@
 	min-width: 350px;
 }
 
-.avatar {
-	border-radius: 9999px;
+.bucket {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 }
