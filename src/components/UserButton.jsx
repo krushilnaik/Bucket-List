@@ -18,7 +18,11 @@ const UserButton = forwardRef(
 			{...others}
 		>
 			<Group>
-				{showAvatar ? <Avatar src={image} inNav={true} /> : <Space w={50} />}
+				{showAvatar ? (
+					<Avatar src={image} inNav={true} />
+				) : (
+					<Space w={45} h={45} />
+				)}
 
 				<div style={{ flex: 1 }}>
 					<Text color="white" size="sm" weight={500}>

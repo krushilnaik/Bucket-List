@@ -30,7 +30,7 @@ function Bucket() {
 				<motion.div
 					initial={{ y: -75, opacity: 0 }}
 					animate={{ y: 0, opacity: 1 }}
-					transition={{ type: "spring", stiffness: 150, delay: 0.3 }}
+					transition={{ type: "spring", stiffness: 200, delay: 0.3 }}
 				>
 					<Text size="xl" align="center" weight="bold">
 						Your Bucket
@@ -41,7 +41,7 @@ function Bucket() {
 			<motion.div
 				initial={{ x: 75, opacity: 0 }}
 				animate={{ x: 0, opacity: 1 }}
-				transition={{ type: "spring", stiffness: 125, delay: 0.2 }}
+				transition={{ type: "spring", stiffness: 200, delay: 0.3 }}
 			>
 				<Tabs grow>
 					<Tabs.Tab label="To do" color="cyan">
