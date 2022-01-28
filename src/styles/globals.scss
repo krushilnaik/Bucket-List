@@ -1,0 +1,22 @@
+html,
+body {
+	padding: 0;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	background-color: darken($color: blue, $amount: 42);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.container {
+	position: relative;
+	z-index: 2;
+}
+
+svg {
+	position: fixed;
+	bottom: 0;
+}

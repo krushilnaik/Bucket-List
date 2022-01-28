@@ -34,5 +34,5 @@ yarn-error.log*
 # vercel
 .vercel
 
-# containerization
-.devcontainer
+# typescript
+*.tsbuildinfo
