@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }) {
 				className="background"
 				viewBox="0 0 360 640"
 				preserveAspectRatio="none"
-				height="95vh"
+				height="93vh"
 				width="100vw"
 				aria-hidden
 			>

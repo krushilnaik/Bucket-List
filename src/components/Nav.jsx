@@ -1,10 +1,12 @@
-import { Button, Group, Space } from "@mantine/core";
+import { Button, Group, Menu, Space } from "@mantine/core";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
+import { FaSignOutAlt } from "react-icons/fa";
 import Avatar from "./Avatar";
 
 import styles from "./styles/Nav.module.scss";
+import UserButton from "./UserButton";
 
 function Nav() {
 	const { asPath } = useRouter();
@@ -18,11 +20,21 @@ function Nav() {
 				<Link href="/bucket" passHref>
 					<Button component="a">Bucket</Button>
 				</Link>
-				{asPath !== "/bucket" ? (
-					<Avatar inNav={true} src="https://via.placeholder.com/200x200" />
-				) : (
-					<Space w={45}></Space>
-				)}
+				<Menu
+					withArrow
+					placement="center"
+					control={
+						<UserButton
+							showAvatar={asPath !== "/bucket"}
+							image="https://via.placeholder.com/200x200"
+							name="Krushil Naik"
+							email="krushilnaik96@gmail.com"
+						/>
+					}
+				>
+					<Menu.Label>Application</Menu.Label>
+					<Menu.Item icon={<FaSignOutAlt />}>Logout</Menu.Item>
+				</Menu>
 			</Group>
 		</nav>
 	);
