@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const wishSchema = new Schema(
+const wisheschema = new Schema(
     {
         wishText: {
             type: String,
@@ -25,6 +25,6 @@ const wishSchema = new Schema(
     }
 );
 
-const Wish = model('Wish', wishSchema);
+const Wish = model('Wish', wisheschema);
 
 module.exports = Wish;
