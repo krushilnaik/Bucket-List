@@ -1,5 +1,5 @@
-import React from 'react';
-
-export default function Home() {
-  return <div className="placeholder">Home</div>;
+function Home() {
+	return <div>Enter</div>;
 }
+
+export default Home;
