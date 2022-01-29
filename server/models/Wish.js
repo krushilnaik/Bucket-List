@@ -17,16 +17,16 @@ const wishSchema = new mongoose.Schema(
 		// 	type: String,
 		// 	required: true,
 		// },
-		user: {
-			type: mongoose.Schema.Types.ObjectId,
-			ref: "User",
-		},
+		// user: {
+		// 	type: mongoose.Schema.Types.ObjectId,
+		// 	ref: "User",
+		// },
 	},
 	{
 		collection: "Wish",
-		toJSON: {
-			getters: true,
-		},
+		// toJSON: {
+		// 	getters: true,
+		// },
 	}
 );
 
