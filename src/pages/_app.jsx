@@ -1,7 +1,9 @@
 import "../styles/globals.scss";
 import { AnimateSharedLayout, LayoutGroup, motion } from "framer-motion";
 import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 import { MantineProvider } from "@mantine/core";
+
 
 function MyApp({ Component, pageProps }) {
 	const frontPaths = [
@@ -51,6 +53,9 @@ function MyApp({ Component, pageProps }) {
 					}}
 				/>
 			</svg>
+			<div className="container">
+					<Footer />
+			</div>
 		</MantineProvider>
 	);
 }

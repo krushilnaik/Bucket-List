@@ -13,7 +13,9 @@ const typeDefs = gql`
 
 	type Wish {
 		_id: ID
+        wishText: String
 		createdAt: String
+        username: String
 		user: User!
 	}
 
