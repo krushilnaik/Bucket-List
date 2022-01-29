@@ -7,7 +7,7 @@ function Avatar(props) {
 
 	return (
 		<motion.img
-			className={inNav ? styles.avatar_small : styles.avatar_large}
+			className={inNav ? styles.small : styles.large}
 			src={src}
 			layoutId="avatar"
 		/>
