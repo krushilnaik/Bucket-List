@@ -19,3 +19,4 @@ function NewWish() {
 }
 
 export default NewWish;
+
