@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server-express");
+const { gql } = require("apollo-server-micro");
 
 const typeDefs = gql`
 	type User {
@@ -13,6 +13,7 @@ const typeDefs = gql`
 
 	type Wish {
 		_id: ID
+		wishText: String!
 		createdAt: String
 		user: User!
 	}
@@ -21,14 +22,14 @@ const typeDefs = gql`
 		me: User
 		users: [User]
 		user(username: String!): User
-		wishes(username: String): [Wish]
+		wishes: [Wish]
 		wish(_id: ID!): Wish
 	}
 
 	type Mutation {
 		login(email: String!, password: String!): User
 		addUser(username: String!, email: String!, password: String!): User
-		addWish(wishText: String!): Wish
+		addWish(wishText: String!, userId: String!): Wish
 	}
 `;
 
