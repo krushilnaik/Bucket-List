@@ -1,16 +1,17 @@
 ## Project Requirements
+
 - [x] Use React for the front end.
-- [ ] Use GraphQL with a Node.js and Express.js server.
-	- [x] Node.js
-	- [x] Express.js
-	- [ ] GraphQL
-- [ ] Use MongoDB and the Mongoose ODM for the database.
-- [ ] Use queries and mutations for retrieving, adding, updating, and deleting data.
+- [x] Use GraphQL with a Node.js and Express.js server.
+  - [x] Node.js
+  - [x] Express.js
+  - [x] GraphQL
+- [x] Use MongoDB and the Mongoose ODM for the database.
+- [x] Use queries and mutations for retrieving, adding, updating, and deleting data.
 - [ ] Be deployed using Heroku (with data).
-- [ ] Have a polished UI.
-- [ ] Be responsive.
-- [ ] Be interactive (i.e., accept and respond to user input).
+- [x] Have a polished UI.
+- [x] Be responsive.
+- [x] Be interactive (i.e., accept and respond to user input).
 - [ ] Include authentication (JWT).
-- [ ] Protect sensitive API key information on the server.
+- [x] Protect sensitive API key information on the server.
 - [x] Have a clean repository that meets quality coding standards (file structure, naming conventions, best practices for class and id naming conventions, indentation, high-quality comments, etc.).
 - [ ] Have a high-quality README (with unique name, description, technologies used, screenshot, and link to deployed application).

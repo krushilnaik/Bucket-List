@@ -9,19 +9,19 @@
 	padding: 15px;
 	user-select: none;
 
-	input {
-		display: block;
-		padding: 10px;
-		background: transparent;
-		border-radius: 7px;
-		outline: none;
-		border: solid 2px darken($color: white, $amount: 35);
-		transition: border 200ms;
+	// input {
+	// 	display: block;
+	// 	padding: 10px;
+	// 	background: transparent;
+	// 	border-radius: 7px;
+	// 	outline: none;
+	// 	border: solid 2px darken($color: white, $amount: 35);
+	// 	transition: border 200ms;
 
-		&:focus {
-			border: solid 2px darken($color: white, $amount: 70);
-		}
-	}
+	// 	&:focus {
+	// 		border: solid 2px darken($color: white, $amount: 70);
+	// 	}
+	// }
 
 	button {
 		justify-self: end;

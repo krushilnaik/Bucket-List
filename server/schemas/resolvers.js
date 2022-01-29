@@ -1,12 +1,13 @@
-const { AuthenticationError } = require("apollo-server-express");
+const { AuthenticationError } = require("apollo-server-micro");
 const { User, Wish } = require("../models");
+const mongoose = require("mongoose");
 // const { signToken } = require('../utils/auth');
 
 const resolvers = {
 	Query: {
 		me: async (parent, args, context) => {
 			if (context.user) {
-				const userData = await User.findOne({ _id: context.user._id })
+				const userData = await User.findOne({ id: context.user._id })
 					.select("-__v -password")
 					.populate("wishes");
 
@@ -18,17 +19,15 @@ const resolvers = {
 		users: async () => {
 			return User.find().select("-__v -password").populate("wishes");
 		},
-		user: async (parent, { username }) => {
-			return User.findOne({ username })
-				.select("-__v -password")
-				.populate("wishes");
+		user: async (parent, { id }) => {
+			return User.findOne({ id }).select("-__v -password").populate("wishes");
 		},
 		wishes: async (parent, { username }) => {
 			const params = username ? { username } : {};
 			return Wish.find(params).sort({ createdAt: -1 });
 		},
-		wish: async (parent, { _id }) => {
-			return Wish.findOne({ _id });
+		wish: async (parent, { id }) => {
+			return Wish.findOne({ id });
 		},
 	},
 
@@ -37,7 +36,7 @@ const resolvers = {
 			const user = await User.create(args);
 			//   const token = signToken(user);
 
-			return { user };
+			return user;
 		},
 		login: async (parent, { email, password }) => {
 			const user = await User.findOne({ email });
@@ -56,22 +55,22 @@ const resolvers = {
 			return { user };
 		},
 		addWish: async (parent, args, context) => {
-			if (context.user) {
-				const wish = await Wish.create({
-					...args,
-					username: context.user.username,
-				});
+			// if (context.user) {
+			const wish = await Wish.create({
+				...args,
+				// username: context.user.username,
+			});
 
-				await User.findByIdAndUpdate(
-					{ _id: context.user._id },
-					{ $push: { wishes: wish._id } },
-					{ new: true }
-				);
+			await User.findByIdAndUpdate(
+				{ _id: mongoose.Types.ObjectId(args.userId) },
+				{ $push: { wishes: mongoose.Types.ObjectId(wish.id) } },
+				{ new: true }
+			);
 
-				return wish;
-			}
+			return wish;
+			// }
 
-			throw new AuthenticationError("You need to be logged in!");
+			// throw new AuthenticationError("You need to be logged in!");
 		},
 	},
 };
