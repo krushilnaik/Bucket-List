@@ -1,4 +1,4 @@
-const { AuthenticationError } = require("apollo-server-express");
+const { AuthenticationError } = require("apollo-server-micro");
 const { User, Wish } = require("../models");
 // const { signToken } = require('../utils/auth');
 
@@ -59,11 +59,11 @@ const resolvers = {
 			if (context.user) {
 				const wish = await Wish.create({
 					...args,
-					username: context.user.username,
+					// username: context.user.username,
 				});
 
 				await User.findByIdAndUpdate(
-					{ _id: context.user._id },
+					{ _id: args._id },
 					{ $push: { wishes: wish._id } },
 					{ new: true }
 				);

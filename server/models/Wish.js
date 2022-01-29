@@ -1,6 +1,6 @@
-const { Schema, model } = require("mongoose");
+const mongoose = require("mongoose");
 
-const wishSchema = new Schema(
+const wishSchema = new mongoose.Schema(
 	{
 		wishText: {
 			type: String,
@@ -8,27 +8,28 @@ const wishSchema = new Schema(
 			minlength: 1,
 			maxlength: 280,
 		},
-		// createdAt: {
-		// 	type: Date,
-		// 	default: Date.now,
-		// 	// get: timestamp => dateFormat(timestamp)
-		// },
+		createdAt: {
+			type: Date,
+			default: Date.now,
+			get: (timestamp) => dateFormat(timestamp),
+		},
 		// username: {
 		// 	type: String,
 		// 	required: true,
 		// },
-		userId: {
-			type: String,
-			required: true,
+		user: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "User",
 		},
 	},
 	{
+		collection: "Wish",
 		toJSON: {
 			getters: true,
 		},
 	}
 );
 
-const Wish = model("Wish", wishSchema);
+// const Wish = model("Wish", wishSchema);
 
-module.exports = Wish;
+module.exports = mongoose.models.Wish || mongoose.model("Wish", wishSchema);

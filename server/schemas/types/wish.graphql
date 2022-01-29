@@ -1,5 +1,0 @@
-type Wish {
-  _id: String!
-  user: User!
-  wishText: String!
-}

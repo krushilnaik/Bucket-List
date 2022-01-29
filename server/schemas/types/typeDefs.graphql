@@ -1,6 +1,0 @@
-type Query {
-  user(_id: String): User
-  users: [User]
-  wish(_id: String): Wish
-  wishes: [Wish]
-}
