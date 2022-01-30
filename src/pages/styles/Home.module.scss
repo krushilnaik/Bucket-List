@@ -1,11 +1,6 @@
-.hero {
+.placeholder {
 	width: 100%;
-}
-
-.avatar {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	border-radius: 999px;
-	border: solid 3px dodgerblue;
+	height: 100%;
+	display: grid;
+	place-content: center;
 }

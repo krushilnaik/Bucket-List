@@ -1,4 +1,3 @@
-import { TextInput } from "@mantine/core";
 import { FaPlusCircle } from "react-icons/fa";
 import styles from "./styles/NewWish.module.scss";
 
@@ -19,4 +18,3 @@ function NewWish() {
 }
 
 export default NewWish;
-
