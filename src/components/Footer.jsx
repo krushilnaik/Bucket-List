@@ -4,6 +4,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/client';
 import { QUERY_CHECKOUT } from '../../utils/queries';
 
+
 import styles from "./styles/Footer.module.scss";
 
 const amounts = ["$5", "$10", "$15", "Other"];
