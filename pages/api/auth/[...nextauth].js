@@ -4,6 +4,7 @@ import FacebookProvider from "next-auth/providers/facebook"
 import GithubProvider from "next-auth/providers/github"
 
 
+
 export default NextAuth({
   session: {
     jwt: true
@@ -25,4 +26,9 @@ export default NextAuth({
       }),
 
   ],
+//   pages: {
+//       signIn: '/login'
+ //},
+
+  database: process.env.DATATBASE_URL,
 })

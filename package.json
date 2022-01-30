@@ -13,6 +13,7 @@
     "@mantine/notifications": "^3.6.2",
     "@mantine/rte": "^3.6.2",
     "auth0": "^2.38.0",
+    "bcryptjs": "^2.4.3",
     "connect-session": "^0.0.1",
     "dayjs": "^1.10.7",
     "dotenv": "^14.3.2",
