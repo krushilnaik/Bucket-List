@@ -1,6 +1,7 @@
 import { Group, Tabs, Text } from "@mantine/core";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useSession } from "next-auth/react";
 import { Reorder } from "framer-motion";
 import styles from "./styles/Bucket.module.scss";
 import Wish from "../components/Wish";
@@ -19,14 +20,12 @@ const initialDones = ["🥑 Avocado", "🍕 Pizza", "🍟 Fries"];
 function Bucket() {
 	const [todos, setTodos] = useState(initialTodos);
 	const [dones, setDones] = useState(initialDones);
+	const { data: session } = useSession();
 
 	return (
 		<Group direction="row" spacing={30} position="center" align="flex-start">
 			<Group direction="column" spacing={25} position="center">
-				<Avatar
-					className={styles.avatar}
-					src="https://via.placeholder.com/200x200"
-				/>
+				<Avatar className={styles.avatar} src={session.user.image} />
 				<motion.div
 					initial={{ y: -75, opacity: 0 }}
 					animate={{ y: 0, opacity: 1 }}
