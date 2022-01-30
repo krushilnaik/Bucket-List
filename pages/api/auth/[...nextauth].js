@@ -1,5 +1,7 @@
 import NextAuth from "next-auth"
-import Providers from "next-auth/providers"
+import GoogleProvider from "next-auth/providers/google"
+import FacebookProvider from "next-auth/providers/facebook"
+import GithubProvider from "next-auth/providers/github"
 
 
 export default NextAuth({
@@ -9,15 +11,15 @@ export default NextAuth({
   secret: process.env.SECRET,
   providers: [
     // OAuth authentication providers
-    Providers.Google({
+    GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
     }),
-    Providers.Facebook({
+    FacebookProvider({
         clientId: process.env.FACEBOOK_CLIENT_ID,
         clientSecret: process.env.FACEBOOK_CLIENT_SECRET
       }),
-    Providers.Github({
+    GithubProvider({
         clientId: process.env.GITHUB_CLIENT_ID,
         clientSecret: process.env.GITHUB_CLIENT_SECRET
       }),
