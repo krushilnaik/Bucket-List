@@ -2,6 +2,7 @@ import "../styles/globals.scss";
 import { motion } from "framer-motion";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
+import CheckoutForm from "../components/CheckoutForm"
 import { MantineProvider } from "@mantine/core";
 import { SessionProvider } from "next-auth/react";
 

@@ -6,10 +6,12 @@ import { Elements } from "@stripe/react-stripe-js";
 
 import CheckoutForm from "../components/CheckoutForm";
 
-const stripePromise = loadStripe(process.env.STRIPE_SECRET_PUB);
+const stripeSecret = `${process.env.STRIPE_SECRET}`
+
+const stripePromise = loadStripe("pk_test_51KNSXfIW0PJEnifXJ0lxdieLSM4hAObZXhY3H7txnvZ2x9QKirybibxJehixNnOM2KbqzwNuP4PjODu3wMpdcrV300v6l26v3y");
 
 export const getServerSideProps = async ctx => {
-  const stripe = new Stripe(process.env.STRIPE_SECRET);
+  const stripe = new Stripe(stripeSecret);
 
   let paymentIntent;
 
