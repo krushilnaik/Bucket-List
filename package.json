@@ -13,6 +13,7 @@
     "@mantine/notifications": "^3.6.2",
     "@mantine/rte": "^3.6.2",
     "auth0": "^2.38.0",
+    "connect-session": "^0.0.1",
     "dayjs": "^1.10.7",
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
@@ -25,6 +26,7 @@
     "next-pwa": "^5.4.1",
     "nodemon": "^2.0.15",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "sequelize": "^6.15.0"
   }
 }

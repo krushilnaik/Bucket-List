@@ -1,0 +1,45 @@
+.new_wish {
+	display: grid;
+	grid-template-columns: 5fr 1fr;
+	align-items: center;
+	// justify-content: space-between;
+	gap: 10px;
+	background-color: lighten($color: lightblue, $amount: 5);
+	border-radius: 7px;
+	padding: 15px;
+	user-select: none;
+
+	// input {
+	// 	display: block;
+	// 	padding: 10px;
+	// 	background: transparent;
+	// 	border-radius: 7px;
+	// 	outline: none;
+	// 	border: solid 2px darken($color: white, $amount: 35);
+	// 	transition: border 200ms;
+
+	// 	&:focus {
+	// 		border: solid 2px darken($color: white, $amount: 70);
+	// 	}
+	// }
+
+	button {
+		justify-self: end;
+		background: transparent;
+		height: 30px;
+		padding: 0;
+		border: none;
+	}
+
+	svg {
+		cursor: pointer;
+		font-size: 30px;
+		border-radius: 999px;
+		transition: color 200ms;
+		color: lighten($color: black, $amount: 25);
+
+		&:hover {
+			color: lightseagreen;
+		}
+	}
+}

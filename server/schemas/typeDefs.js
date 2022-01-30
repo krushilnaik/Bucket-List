@@ -1,9 +1,34 @@
-//import the gql tagged template function
-// const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-micro");
 
-const typeDefs = {
+const typeDefs = gql`
+	type User {
+		id: ID
+		username: String!
+		password: String!
+		email: String!
+		wishes: [Wish]
+	}
 
-}
+	type Wish {
+		id: ID
+		wishText: String!
+		createdAt: String
+		user: User!
+	}
 
-//export the typeDefs
+	type Query {
+		me: User
+		users: [User]
+		user(id: String!): User
+		wishes: [Wish]
+		wish(id: ID!): Wish
+	}
+
+	type Mutation {
+		login(email: String!, password: String!): User
+		addUser(username: String!, email: String!, password: String!): User
+		addWish(wishText: String!, userId: String!): Wish
+	}
+`;
+
 module.exports = typeDefs;
