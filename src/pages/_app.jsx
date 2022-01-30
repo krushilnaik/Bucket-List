@@ -20,8 +20,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
 	return (
 		<MantineProvider theme={{ colorScheme: "dark" }}>
 			<div className="container">
-				<Nav />
 				<SessionProvider session={session}>
+					<Nav />
 					<Component {...pageProps} />
 				</SessionProvider>
 			</div>
@@ -37,7 +37,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
 				<motion.path
 					fill="#09f"
 					fillOpacity={0.25}
-					d={backPaths[1]}
 					animate={{ d: backPaths }}
 					transition={{
 						duration: 0.85,
