@@ -1,32 +1,49 @@
 {
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "node server/server.js",
-    "watch": "nodemon server.js"
-  },
-  "dependencies": {
-    "@mantine/core": "^3.6.2",
-    "@mantine/dates": "^3.6.2",
-    "@mantine/hooks": "^3.6.2",
-    "@mantine/notifications": "^3.6.2",
-    "@mantine/rte": "^3.6.2",
-    "auth0": "^2.38.0",
-    "connect-session": "^0.0.1",
-    "dayjs": "^1.10.7",
-    "dotenv": "^14.3.2",
-    "express": "^4.17.2",
-    "framer-motion": "^6.2.3",
-    "jsonwebtoken": "^8.5.1",
-    "mongodb": "^4.3.1",
-    "mongoose": "^6.1.8",
-    "next": "latest",
-    "next-auth": "^4.1.2",
-    "next-pwa": "^5.4.1",
-    "nodemon": "^2.0.15",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "sequelize": "^6.15.0"
-  }
+	"name": "bucket-list",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "node server/server.js",
+		"seed": "node server/seeders/seeds",
+		"lint": "next lint"
+	},
+	"prisma": {
+		"schema": "./src/prisma/schema.prisma"
+	},
+	"dependencies": {
+		"@apollo/client": "^3.5.8",
+		"@graphql-tools/schema": "^8.3.1",
+		"@mantine/core": "^3.6.2",
+		"@mantine/hooks": "^3.6.2",
+		"@mantine/next": "^3.6.3",
+		"@prisma/client": "^3.8.1",
+		"@stripe/react-stripe-js": "^1.7.0",
+		"@stripe/stripe-js": "^1.22.0",
+		"apollo-server-micro": "^3.6.2",
+		"dotenv": "^14.3.2",
+		"express": "^4.17.2",
+		"framer-motion": "^6.2.3",
+		"graphql": "^16.3.0",
+		"jsonwebtoken": "^8.5.1",
+		"micro-cors": "^0.1.1",
+		"mongoose": "^6.1.8",
+		"next": "latest",
+		"next-auth": "^4.1.2",
+		"next-pwa": "^5.4.4",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"react-icons": "^4.3.1",
+		"sass": "^1.49.0"
+	},
+	"devDependencies": {
+		"@types/react": "17.0.38",
+		"eslint": "8.8.0",
+		"eslint-config-next": "12.0.9",
+		"faker": "^4.1.0",
+		"micro": "^9.3.4",
+		"nodemon": "^2.0.15",
+		"prisma": "^3.8.1",
+		"sass": "^1.49.0"
+	}
 }
