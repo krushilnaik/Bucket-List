@@ -1,28 +1,48 @@
-import Stripe from 'Stripe';
-import { laodStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js"
+import React from "react";
+import Stripe from "stripe";
+import { parseCookies, setCookie } from "nookies";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
-const stripePromise = laodStripe("STRIPE_SECRET_KEY_HERE");
+import CheckoutForm from "../components/CheckoutForm";
 
-export const getServerSideProps = async () => {
+const stripePromise = loadStripe(process.env.STRIPE_SECRET_PUB);
 
-    const stripe = new Stripe("STRIPE_SECRET_KEY_HERE");
+export const getServerSideProps = async ctx => {
+  const stripe = new Stripe(process.env.STRIPE_SECRET);
 
-    const paymentIntent = await stripe.paymentIntents.create({
-        amount: 5,
-        currency: "usd"
-    });
+  let paymentIntent;
+
+  const { paymentIntentId } = await parseCookies(ctx);
+
+  if (paymentIntentId) {
+    paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
+
     return {
-        props: {
-            paymentIntent
-        }
-    }
-}
+      props: {
+        paymentIntent
+      }
+    };
+  }
 
-const CheckoutPage = props => (
-    <Elements stirpe={stripePromise}>
-        <pre> {JSON.stringify(props, null, 2)} </pre>
-    </Elements>
+  paymentIntent = await stripe.paymentIntents.create({
+    amount: 500,
+    currency: "usd"
+  });
+
+  setCookie(ctx, "paymentIntentId", paymentIntent.id);
+
+  return {
+    props: {
+      paymentIntent
+    }
+  };
+};
+
+const CheckoutPage = ({ paymentIntent }) => (
+  <Elements stripe={stripePromise}>
+    <CheckoutForm paymentIntent={paymentIntent} />
+  </Elements>
 );
 
 export default CheckoutPage;

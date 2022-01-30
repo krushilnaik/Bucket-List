@@ -1,39 +1,51 @@
-import React from 'react';
-import { CardElement, Elements } from '@stripe/react-stripe-js';
-import CheckoutForm from "../components/CheckoutForm";
+import React, { useState } from "react";
+import { useStripe, useElements, PaymentElement } from "@stripe/react-stripe-js";
+import { destroyCookie } from "nookies";
 
 const CheckoutForm = ({ paymentIntent }) => {
-    const handleSubmit = async e => {
-        e.preventDefault();
+  const stripe = useStripe();
+  const elements = useElements();
+  const [checkoutError, setCheckoutError] = useState();
+  const [checkoutSuccess, setCheckoutSuccess] = useState();
 
-        try {
-            const { error, paymentIntent: { status } = await stripe.confirmCardPayment(paymentIntent.client_secret,{
-                payment_method: {
-                    card: elements.getElement(CardElement)
-                }
-            }) }
+  const handleSubmit = async e => {
+    e.preventDefault();
 
-            if (error) throw new Error(error.message)
-
-            if (stauts === "suceeded") {
-                alert("Payment made!")
-            }
+    try {
+      const {
+        error,
+        paymentIntent: { status }
+      } = await stripe.confirmCardPayment(paymentIntent.client_secret, {
+        payment_method: {
+          card: elements.getElement(CardElement)
         }
-        catch (err) {
-            aler(err.message);
+      });
 
-        }
+      if (error) throw new Error(error.message);
 
+      if (status === "succeeded") {
+        setCheckoutSuccess(true);
+        destroyCookie(null, "paymentIntentId");
+      }
+    } catch (err) {
+      alert(err.message);
+      setCheckoutError(err.message);
     }
-    return (
-        <form onSubmit={handleSubmit}>
-            <CardElement />
-            <button type="submit" disabled={!stripe}>
-                DONATE
-            </button>
-        </form>
-    );
+  };
 
-}
+  if (checkoutSuccess) return <p>Payment successful!</p>;
 
-export default CheckoutForm
+  return (
+    <form onSubmit={handleSubmit}>
+      <PaymentElement />
+
+      <button type="submit" disabled={!stripe}>
+        DONATE
+      </button>
+
+      {checkoutError && <span style={{ color: "red" }}>{checkoutError}</span>}
+    </form>
+  );
+};
+
+export default CheckoutForm;
