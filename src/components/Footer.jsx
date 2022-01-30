@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Text } from "@mantine/core";
+import { Button } from "@mantine/core";
 
 import styles from "./styles/Footer.module.scss";
 
