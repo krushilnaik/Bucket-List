@@ -1,0 +1,20 @@
+.donation {
+	position: absolute;
+	bottom: 15px;
+	left: 50%;
+	z-index: 999;
+	transform: translateX(-50%);
+	margin: auto;
+	text-align: center;
+
+	p {
+		font-weight: bold;
+		color: white;
+	}
+
+	button {
+		&:not(:last-child) {
+			margin-right: 7px;
+		}
+	}
+}

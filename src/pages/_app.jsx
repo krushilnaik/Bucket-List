@@ -1,6 +1,7 @@
 import "../styles/globals.scss";
-import { AnimateSharedLayout, LayoutGroup, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 import { MantineProvider } from "@mantine/core";
 
 function MyApp({ Component, pageProps }) {
@@ -19,10 +20,9 @@ function MyApp({ Component, pageProps }) {
 		<MantineProvider theme={{ colorScheme: "dark" }}>
 			<div className="container">
 				<Nav />
-				<div className="content">
-					<Component {...pageProps} />
-				</div>
+				<Component {...pageProps} />
 			</div>
+			<Footer />
 			<svg
 				className="background"
 				viewBox="0 0 360 640"
