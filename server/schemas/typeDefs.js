@@ -24,6 +24,10 @@ const typeDefs = gql`
 		wish(id: ID!): Wish
 	}
 
+	type Checkout{
+		sessoin: ID
+	}
+
 	type Mutation {
 		login(email: String!, password: String!): User
 		addUser(username: String!, email: String!, password: String!): User

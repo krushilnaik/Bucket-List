@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import { useStripe, useElements, PaymentElement } from "@stripe/react-stripe-js";
+import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { destroyCookie } from "nookies";
+import styles from "./styles/Checkout.module.scss";
+import { Button } from "@mantine/core";
+
 
 const CheckoutForm = ({ paymentIntent }) => {
   const stripe = useStripe();
@@ -36,15 +39,17 @@ const CheckoutForm = ({ paymentIntent }) => {
   if (checkoutSuccess) return <p>Payment successful!</p>;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <PaymentElement />
+    <div className={styles.checkout}>
+      <form onSubmit={handleSubmit}>
+        <CardElement />
 
-      <button type="submit" disabled={!stripe}>
-        DONATE
-      </button>
+          <Button type="submit" disabled={!stripe} variant="gradient" gradient={{ from: "orange", to: "red" }} onClick={""}>
+            DONATE
+          </Button>
 
-      {checkoutError && <span style={{ color: "red" }}>{checkoutError}</span>}
-    </form>
+        {checkoutError && <span style={{ color: "red" }}>{checkoutError}</span>}
+      </form >
+    </div >
   );
 };
 
