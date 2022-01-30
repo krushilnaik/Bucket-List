@@ -3,8 +3,9 @@ import { motion } from "framer-motion";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import { MantineProvider } from "@mantine/core";
+import { SessionProvider } from "next-auth/react";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
 	const frontPaths = [
 		"M 0,640 V 608.8 C 0,608.8 17.8,591 53.41,597.3 89.01,603.5 89.9,588.3 119.2,591.9 148.6,595.4 162.9,618.6 206.5,600.8 250.1,583 264,580.4 301.7,594.7 339.5,608.9 360,598.2 360,598.2 V 640 Z",
 		"M 0,640 V 17.98 C 0,17.98 11.86,22.7 34.72,16.94 61.65,10.15 89.01,22.23 118.3,25.83 147.7,29.44 168.6,22.09 215.4,16.89 255.4,12.44 274.3,21.49 298.8,22.46 342,24.16 360,11.75 360,11.75 V 640 Z",
@@ -20,7 +21,9 @@ function MyApp({ Component, pageProps }) {
 		<MantineProvider theme={{ colorScheme: "dark" }}>
 			<div className="container">
 				<Nav />
-				<Component {...pageProps} />
+				<SessionProvider session={session}>
+					<Component {...pageProps} />
+				</SessionProvider>
 			</div>
 			<Footer />
 			<svg
