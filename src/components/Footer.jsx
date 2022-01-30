@@ -1,49 +1,35 @@
-import React from 'react';
-import { Button, Group } from "@mantine/core";
+import React, { useState } from "react";
+import { Button, Text } from "@mantine/core";
 
+import styles from "./styles/Footer.module.scss";
+
+const amounts = ["$5", "$10", "$15", "Other"];
 
 function Footer() {
-    return (
-        <Group position="center" m="md" mb="xl">
-            <div className='donation'>
-                <p>SUPPORT OUR WORK</p>
-                <Button>$5</Button>
-                <Button>$10</Button>
-                <Button>$15</Button>
-                <Button>Other</Button>
-                <Button variant="gradient" gradient={{ from: 'orange', to: 'red' }}>DONATE</Button>
+	const [value, setValue] = useState("");
 
-            </div>
-        </Group>
-    )
+	return (
+		<div className={styles.donation}>
+			<p>SUPPORT OUR WORK</p>
+			{amounts.map((amount) => (
+				<Button
+					component="button"
+					key={`donate-${amount}`}
+					color={amount === value ? "grape" : "gray"}
+					onClick={() => setValue(amount)}
+				>
+					{amount}
+				</Button>
+			))}
+			<Button
+				disabled={value === ""}
+				variant="gradient"
+				gradient={{ from: "orange", to: "red" }}
+			>
+				DONATE
+			</Button>
+		</div>
+	);
 }
 
-
 export default Footer;
-
-
-// <Group position="center" m="md" mb="xl">
-
-// <div className='donation'>
-//     <p>SUPPORT OUR WORK</p>
-//     <Grid>
-//         <Grid.Col span={1}><Button>$5</Button></Grid.Col>
-//         <Grid.Col span={1}><Button>$10</Button></Grid.Col>
-//         <Grid.Col span={1}><Button>$15</Button></Grid.Col>
-//         <Grid.Col span={1}><Button>Other</Button></Grid.Col>
-//         <Grid.Col span={1}><Button variant="gradient" gradient={{ from: 'orange', to: 'red' }}>DONATE</Button></Grid.Col>
-//     </Grid >
-// </div>
-
-
-{/* <Group position="center" m="md" mb="xl">
-<div className='donation'>
-    <p>SUPPORT OUR WORK</p>
-    <Button>$5</Button>
-    <Button>$10</Button>
-    <Button>$15</Button>
-    <Button>Other</Button>
-    <Button variant="gradient" gradient={{ from: 'orange', to: 'red' }}>DONATE</Button>
-
-</div>
-</Group> */}
