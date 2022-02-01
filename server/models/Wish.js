@@ -13,6 +13,10 @@ const wishSchema = new mongoose.Schema(
 			default: Date.now,
 			get: (timestamp) => dateFormat(timestamp),
 		},
+		isCompleted: {
+			type: Boolean,
+			default: false
+		}
 		// username: {
 		// 	type: String,
 		// 	required: true,

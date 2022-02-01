@@ -34,3 +34,14 @@ export const ADD_WISH = gql`
     }
   }
 `;
+
+export const COMPLETE_WISH = gql`
+  mutation completeWish($wishId: ID!) {
+    completeWish(wishId: $wishId) {
+      _id
+      wishText
+      createdAt
+      username
+    }
+  }
+`;

@@ -31,19 +31,19 @@ const resolvers = {
 			return Wish.findOne({ id });
 		},
 		checkout: async (parent, args, context) => {
-			
+
 			const line_items = [];
-	  
+
 			const session = await stripe.checkout.sessions.create({
-			  payment_method_types: ['card'],
-			  line_items,
-			  mode: 'payment',
-			  success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-			  cancel_url: `${url}/`
+				payment_method_types: ['card'],
+				line_items,
+				mode: 'payment',
+				success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+				cancel_url: `${url}/`
 			});
-	  
+
 			return { session: session.id };
-		  }
+		}
 	},
 
 	Mutation: {
@@ -86,6 +86,18 @@ const resolvers = {
 			// }
 
 			// throw new AuthenticationError("You need to be logged in!");
+		},
+		completeWish: async (parent, { wishId }, context) => {
+			if (context.user) {
+				const updatedWish = await Wish.findOneAndUpdate(
+					{ _id: wishId },
+					{ $set: { isCompleted: true } }
+				);
+				return updatedWish;
+			}
+
+
+			throw new AuthenticationError('You need to be logged in!');
 		},
 	},
 };

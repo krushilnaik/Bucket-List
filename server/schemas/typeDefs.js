@@ -33,6 +33,7 @@ const typeDefs = gql`
 		login(email: String!, password: String!): User
 		addUser(username: String!, email: String!, password: String!): User
 		addWish(wishText: String!, userId: String!): Wish
+		completeWish(wishId: ID!): Wish
 	}
 `;
 
