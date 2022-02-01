@@ -1,0 +1,25 @@
+.checkout {
+	position: absolute;
+    width: 40%;
+	bottom: 15px;
+	left: 50%;
+	z-index: 999;
+	transform: translateX(-50%);
+	margin: auto;
+    padding: 20px;
+	text-align: center;
+    background-color: lighten($color: lightblue, $amount: 5);
+    border-radius: 7px;
+
+	p {
+		font-weight: bold;
+		color: white;
+	}
+
+	button {
+		&:not(:last-child) {
+			margin-top: 20px;
+		}
+	}
+}
+

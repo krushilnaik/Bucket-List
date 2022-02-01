@@ -2,6 +2,7 @@ const { AuthenticationError } = require("apollo-server-micro");
 const { User, Wish } = require("../models");
 const mongoose = require("mongoose");
 // const { signToken } = require('../utils/auth');
+const stripe = require('stripe');
 
 const resolvers = {
 	Query: {
@@ -31,6 +32,20 @@ const resolvers = {
 		wish: async (parent, { id }) => {
 			return Wish.findOne({ id });
 		},
+		checkout: async (parent, args, context) => {
+			
+			const line_items = [];
+	  
+			const session = await stripe.checkout.sessions.create({
+			  payment_method_types: ['card'],
+			  line_items,
+			  mode: 'payment',
+			  success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+			  cancel_url: `${url}/`
+			});
+	  
+			return { session: session.id };
+		  }
 	},
 
 	Mutation: {

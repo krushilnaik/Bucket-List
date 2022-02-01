@@ -25,6 +25,7 @@
 		"framer-motion": "^6.2.3",
 		"graphql": "^16.3.0",
 		"micro-cors": "^0.1.1",
+		"mongodb": "^4.3.1",
 		"mongoose": "^6.1.8",
 		"next": "latest",
 		"next-auth": "^4.1.2",

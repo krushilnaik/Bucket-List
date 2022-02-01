@@ -1,6 +1,7 @@
 import { Group, Tabs, Text } from "@mantine/core";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useSession } from "next-auth/react";
 import { Reorder } from "framer-motion";
 import styles from "./styles/Bucket.module.scss";
 import Wish from "../components/Wish";

@@ -23,6 +23,11 @@ const typeDefs = gql`
 		user(id: String!): User
 		wishes: [Wish]
 		wish(id: ID!): Wish
+		getCheckout(amount: Int): Checkout
+	}
+
+	type Checkout{
+		session: ID
 	}
 
 	type Mutation {
