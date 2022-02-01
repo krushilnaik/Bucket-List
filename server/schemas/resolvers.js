@@ -20,7 +20,9 @@ const resolvers = {
 			return User.find().select("-__v -password").populate("wishes");
 		},
 		user: async (parent, { id }) => {
-			return User.findOne({ id }).select("-__v -password").populate("wishes");
+			return User.findOne({ _id: mongoose.Types.ObjectId(id) })
+				.select("-__v -password")
+				.populate("wishes");
 		},
 		wishes: async (parent, { id }) => {
 			const params = id ? { id } : {};

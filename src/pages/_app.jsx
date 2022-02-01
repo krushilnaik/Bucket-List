@@ -3,6 +3,9 @@ import { AnimateSharedLayout, LayoutGroup, motion } from "framer-motion";
 import Nav from "../components/Nav";
 import { MantineProvider } from "@mantine/core";
 import { SessionProvider } from "next-auth/react";
+import { ApolloProvider } from "@apollo/client";
+
+import apolloClient from "../lib/apollo.js";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
 	const frontPaths = [
@@ -19,40 +22,42 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
 	return (
 		<SessionProvider session={session}>
 			<MantineProvider theme={{ colorScheme: "dark" }}>
-				<div className="container">
-					<Nav />
-					<div className="content">
-						<Component {...pageProps} />
+				<ApolloProvider client={apolloClient}>
+					<div className="container">
+						<Nav />
+						<div className="content">
+							<Component {...pageProps} />
+						</div>
 					</div>
-				</div>
-				<svg
-					className="background"
-					viewBox="0 0 360 640"
-					preserveAspectRatio="none"
-					height="93vh"
-					width="100vw"
-					aria-hidden
-				>
-					<motion.path
-						fill="#09f"
-						fillOpacity={0.25}
-						d={backPaths[1]}
-						animate={{ d: backPaths }}
-						transition={{
-							duration: 0.85,
-							easings: ["easeIn"],
-						}}
-					/>
-					<motion.path
-						fill="#09f"
-						fillOpacity={0.5}
-						animate={{ d: frontPaths }}
-						transition={{
-							easings: ["linear", "easeOut"],
-							times: [0, 0.65, 1],
-						}}
-					/>
-				</svg>
+					<svg
+						className="background"
+						viewBox="0 0 360 640"
+						preserveAspectRatio="none"
+						height="93vh"
+						width="100vw"
+						aria-hidden
+					>
+						<motion.path
+							fill="#09f"
+							fillOpacity={0.25}
+							d={backPaths[1]}
+							animate={{ d: backPaths }}
+							transition={{
+								duration: 0.85,
+								easings: ["easeIn"],
+							}}
+						/>
+						<motion.path
+							fill="#09f"
+							fillOpacity={0.5}
+							animate={{ d: frontPaths }}
+							transition={{
+								easings: ["linear", "easeOut"],
+								times: [0, 0.65, 1],
+							}}
+						/>
+					</svg>
+				</ApolloProvider>
 			</MantineProvider>
 		</SessionProvider>
 	);

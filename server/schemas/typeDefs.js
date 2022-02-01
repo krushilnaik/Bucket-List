@@ -12,6 +12,7 @@ const typeDefs = gql`
 	type Wish {
 		id: ID
 		wishText: String!
+		isCompleted: Boolean!
 		createdAt: String
 		user: User!
 	}
