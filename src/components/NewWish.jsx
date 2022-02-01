@@ -1,8 +1,10 @@
-import { TextInput } from "@mantine/core";
 import { FaPlusCircle } from "react-icons/fa";
 import styles from "./styles/NewWish.module.scss";
 
 function NewWish() {
+	/**
+	 * TODO: hook this up to the addWish GraphQL mutation
+	 */
 	return (
 		<form className={styles.new_wish}>
 			<input
@@ -19,4 +21,3 @@ function NewWish() {
 }
 
 export default NewWish;
-
