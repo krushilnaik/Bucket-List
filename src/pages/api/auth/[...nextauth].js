@@ -7,12 +7,14 @@ import clientPromise from "../../../lib/mongodb";
 
 export default NextAuth({
 	session: {
-		jwt: true,
+		strategy: "jwt",
 	},
-
-	// secret: process.env.SECRET,
+	adapter: MongoDBAdapter(clientPromise, {
+		collections: {
+			Users: "User",
+		},
+	}),
 	providers: [
-		// OAuth authentication providers
 		GoogleProvider({
 			clientId: process.env.GOOGLE_ID,
 			clientSecret: process.env.GOOGLE_SECRET,
@@ -26,7 +28,12 @@ export default NextAuth({
 			clientSecret: process.env.GITHUB_CLIENT_SECRET,
 		}),
 	],
-	database: process.env.DATATBASE_URL,
-	// adapter: MongoDBAdapter(clientPromise)
+	callbacks: {
+		async session({ session, token }) {
+			return {
+				...session,
+				user: { ...session.user, id: token.sub },
+			};
+		},
+	},
 });
-

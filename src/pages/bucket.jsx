@@ -7,25 +7,44 @@ import styles from "./styles/Bucket.module.scss";
 import Wish from "../components/Wish";
 import NewWish from "../components/NewWish";
 import Avatar from "../components/Avatar";
+import { getSession, useSession } from "next-auth/react";
+import apolloClient from "../lib/apollo";
+import { QUERY_USER } from "../utils/queries";
 
-// export const getServerSideProps = async (ctx) => ({
-// 	props: {
-// 		data: null,
-// 	},
-// });
+export const getServerSideProps = async (ctx) => {
+	const session = await getSession(ctx);
 
-const initialTodos = ["🍅 Tomato", "🥒 Cucumber", "🧀 Cheese", "🥬 Lettuce"];
-const initialDones = ["🥑 Avocado", "🍕 Pizza", "🍟 Fries"];
+	const { data } = await apolloClient.query({
+		query: QUERY_USER,
+		variables: {
+			userId: session.user.id,
+		},
+	});
 
-function Bucket() {
-	const [todos, setTodos] = useState(initialTodos);
-	const [dones, setDones] = useState(initialDones);
-	const { data: session } = useSession();
+	return {
+		props: {
+			wishes: data.user.wishes,
+		},
+	};
+};
+
+function Bucket(props) {
+	const { wishes } = props;
+
+	const [todos, setTodos] = useState(
+		wishes.filter((wish) => !wish.isCompleted)
+	);
+	const [dones, setDones] = useState(wishes.filter((wish) => wish.isCompleted));
+	const { data: session, status } = useSession();
+
+	if (status === "loading") {
+		return <div>loading...</div>;
+	}
 
 	return (
 		<Group direction="row" spacing={30} position="center" align="flex-start">
 			<Group direction="column" spacing={25} position="center">
-				{/* <Avatar className={styles.avatar} src={session.user.image} /> */}
+				<Avatar className={styles.avatar} src={session.user.image} />
 				<motion.div
 					initial={{ y: -75, opacity: 0 }}
 					animate={{ y: 0, opacity: 1 }}
@@ -53,7 +72,7 @@ function Bucket() {
 							>
 								<NewWish />
 								{todos.map((item) => (
-									<Wish key={item} item={item} />
+									<Wish key={item.id} item={item.wishText} />
 								))}
 							</Reorder.Group>
 						</section>
@@ -67,7 +86,7 @@ function Bucket() {
 								values={dones}
 							>
 								{dones.map((item) => (
-									<Wish key={item} item={item} />
+									<Wish key={item.id} item={item.wishText} />
 								))}
 							</Reorder.Group>
 						</section>

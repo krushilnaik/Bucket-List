@@ -1,9 +1,8 @@
 const mongoose = require("mongoose");
-// const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema(
 	{
-		username: {
+		name: {
 			type: String,
 			required: true,
 			unique: true,
@@ -30,12 +29,7 @@ const userSchema = new mongoose.Schema(
 	},
 	{
 		collection: "User",
-		toJSON: {
-			virtuals: true,
-		},
 	}
 );
-
-// const User = model("User", userSchema);
 
 module.exports = mongoose.models.User || mongoose.model("User", userSchema);

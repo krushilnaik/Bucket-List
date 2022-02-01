@@ -1,5 +1,5 @@
 const faker = require("faker");
-const sample = require("lodash.sample");
+// const sample = require("lodash.sample");
 
 const { Wish, User } = require("../models");
 // const db = require("../config/connection");
@@ -7,29 +7,29 @@ const { Wish, User } = require("../models");
 // db.once("open", async () => {
 // 	console.log("clearing database");
 
-// 	await Wish.deleteMany({});
-// 	await User.deleteMany({});
+await Wish.deleteMany({});
+await User.deleteMany({});
 
-// 	console.log("database cleared");
-// 	// create user data
-// 	const userData = [];
+console.log("database cleared");
+	// create user data
+	// const userData = [];
 
 // 	console.log("creating users");
 
-// 	for (let i = 0; i < 5; i += 1) {
-// 		const username = faker.internet.userName();
-// 		const email = faker.internet.email(username);
-// 		const password = faker.internet.password();
+	for (let i = 0; i < 5; i += 1) {
+		const name = faker.internet.userName();
+		const email = faker.internet.email(name);
+		const password = faker.internet.password();
 
-// 		userData.push({ username, email, password });
-// 		// const createdUser = await User.create({ username, email, password });
+		// userData.push({ name, email, password });
+		await User.create({ name, email, password });
 
-// 		// console.log(createdUser);
-// 	}
+		// console.log(createdUser);
+	}
 
-// 	await User.collection.insertMany(userData);
+	// await User.collection.insertMany(userData);
 
-// 	console.log(`Created ${userData.length} users`);
+	// console.log(`Created ${userData.length} users`);
 
 // 	// const createdUsers = await User.collection.insertMany(userData);
 

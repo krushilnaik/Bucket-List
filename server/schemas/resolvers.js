@@ -21,10 +21,12 @@ const resolvers = {
 			return User.find().select("-__v -password").populate("wishes");
 		},
 		user: async (parent, { id }) => {
-			return User.findOne({ id }).select("-__v -password").populate("wishes");
+			return User.findOne({ _id: mongoose.Types.ObjectId(id) })
+				.select("-__v -password")
+				.populate("wishes");
 		},
-		wishes: async (parent, { username }) => {
-			const params = username ? { username } : {};
+		wishes: async (parent, { id }) => {
+			const params = id ? { id } : {};
 			return Wish.find(params).sort({ createdAt: -1 });
 		},
 		wish: async (parent, { id }) => {
@@ -73,7 +75,7 @@ const resolvers = {
 			// if (context.user) {
 			const wish = await Wish.create({
 				...args,
-				// username: context.user.username,
+				// name: context.user.name,
 			});
 
 			await User.findByIdAndUpdate(
