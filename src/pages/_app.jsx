@@ -1,4 +1,3 @@
-import "../styles/globals.scss";
 import { motion } from "framer-motion";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
