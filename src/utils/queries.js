@@ -46,10 +46,10 @@ export const QUERY_ME_BASIC = gql`
   }
 `;
 
-export const QUERY_CHECKOUT = gql`
-  query getCheckout($amount: Int) {
-    getCheckout(amount: $amount) {
-      session
-    }
-  }
-`;
+// export const QUERY_CHECKOUT = gql`
+//   query getCheckout($amount: Int) {
+//     getCheckout(amount: $amount) {
+//       session
+//     }
+//   }
+// `;

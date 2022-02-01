@@ -25,7 +25,7 @@ function Bucket() {
 	return (
 		<Group direction="row" spacing={30} position="center" align="flex-start">
 			<Group direction="column" spacing={25} position="center">
-				<Avatar className={styles.avatar} src={session.user.image} />
+				{/* <Avatar className={styles.avatar} src={session.user.image} /> */}
 				<motion.div
 					initial={{ y: -75, opacity: 0 }}
 					animate={{ y: 0, opacity: 1 }}
