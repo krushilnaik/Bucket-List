@@ -1,47 +1,50 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_WISH = gql`
-  query wish($id: ID!) {
-    wish(_id: $id) {
-      _id
-      wishText
-      createdAt
-      username
-    }
-  }
+	query wish($id: ID!) {
+		wish(_id: $id) {
+			_id
+			wishText
+			createdAt
+			name
+		}
+	}
 `;
 
 export const QUERY_USER = gql`
-  query user($username: String!) {
-    user(username: $username) {
-      _id
-      username
-      email
-    }
-  }
+	query user($name: String!) {
+		user(name: $name) {
+			name
+			wishes {
+				id
+				wishText
+				isCompleted
+			}
+		}
+	}
 `;
 
-export const QUERY_ME = gql`
-  {
-    me {
-      _id
-      username
-      email
-    }
-  }
-`;
+// export const QUERY_ME = gql`
+// 	{
+// 		me {
+// 			_id
+// 			name
+// 			email
+// 		}
+// 	}
+// `;
 
-export const QUERY_ME_BASIC = gql`
-  {
-    me {
-      _id
-      username
-      email
-      friendCount
-      friends {
-        _id
-        username
-      }
-    }
-  }
-`;
+// export const QUERY_ME_BASIC = gql`
+// 	{
+// 		me {
+// 			_id
+// 			name
+// 			email
+// 			friendCount
+// 			friends {
+// 				_id
+// 				name
+// 			}
+// 		}
+// 	}
+// `;

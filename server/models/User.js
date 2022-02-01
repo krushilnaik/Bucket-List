@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema(
 	{
-		username: {
+		name: {
 			type: String,
 			required: true,
 			unique: true,
@@ -30,9 +30,9 @@ const userSchema = new mongoose.Schema(
 	},
 	{
 		collection: "User",
-		toJSON: {
-			virtuals: true,
-		},
+		// toJSON: {
+		// 	virtuals: true,
+		// },
 	}
 );
 
