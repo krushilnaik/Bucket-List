@@ -27,9 +27,6 @@ export const getServerSideProps = async (ctx) => {
 	};
 };
 
-const initialTodos = ["🍅 Tomato", "🥒 Cucumber", "🧀 Cheese", "🥬 Lettuce"];
-const initialDones = ["🥑 Avocado", "🍕 Pizza", "🍟 Fries"];
-
 function Bucket(props) {
 	const { wishes } = props;
 
@@ -42,18 +39,6 @@ function Bucket(props) {
 	if (status === "loading") {
 		return <div>loading...</div>;
 	}
-
-	// const { loading, data } = useQuery(QUERY_USER, {
-	// 	variables: {
-	// 		userId: session.user.id,
-	// 	},
-	// });
-
-	// if (loading) {
-	// 	return <div>loading...</div>;
-	// }
-
-	// console.log("the data", data);
 
 	return (
 		<Group direction="row" spacing={30} position="center" align="flex-start">
