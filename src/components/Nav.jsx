@@ -13,12 +13,7 @@ function Nav() {
 	const { data: session } = useSession();
 
 	return (
-		<Group
-			position="right"
-			m="md"
-			mb="xl"
-			// sx={() => ({ width: "fit-content" })}
-		>
+		<Group position="right" m="md" mb="xl">
 			<Link href="/" passHref>
 				<Button component="a">Home</Button>
 			</Link>
@@ -44,12 +39,18 @@ function Nav() {
 					</Menu.Item>
 				</Menu>
 			) : (
-				<Button
-					onClick={() => signIn()}
-					sx={() => ({ width: 45, height: 45, padding: 0, borderRadius: 999 })}
-				>
-					<BsPersonCircle size={45} />
-				</Button>
+				<Link href="/auth/sign_in">
+					<Button
+						sx={() => ({
+							width: 45,
+							height: 45,
+							padding: 0,
+							borderRadius: 999,
+						})}
+					>
+						<BsPersonCircle size={45} />
+					</Button>
+				</Link>
 			)}
 		</Group>
 	);
