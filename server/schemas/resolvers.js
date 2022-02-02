@@ -1,7 +1,6 @@
 const { AuthenticationError } = require("apollo-server-micro");
 const { User, Wish } = require("../models");
 const mongoose = require("mongoose");
-// const { signToken } = require('../utils/auth');
 
 const resolvers = {
 	Query: {
@@ -57,9 +56,6 @@ const resolvers = {
 			return { user };
 		},
 		addWish: async (parent, { wishText, userId }, context) => {
-			console.log("adding wish...");
-			// console.log(args);
-			// if (context.user) {
 			const wish = await Wish.create({
 				wishText,
 			});

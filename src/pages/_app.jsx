@@ -5,6 +5,8 @@ import { MantineProvider } from "@mantine/core";
 import { SessionProvider } from "next-auth/react";
 import { ApolloProvider } from "@apollo/client";
 
+import Footer from "../components/Footer";
+
 import apolloClient from "../lib/apollo.js";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
@@ -29,6 +31,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
 							<Component {...pageProps} />
 						</div>
 					</div>
+					<Footer />
 					<svg
 						className="background"
 						viewBox="0 0 360 640"

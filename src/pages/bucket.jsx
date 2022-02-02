@@ -42,7 +42,6 @@ function Bucket(props) {
 	}
 
 	const optimisticAddWish = (newWish) => {
-		console.log([...todos, newWish]);
 		setTodos([...todos, newWish]);
 	};
 

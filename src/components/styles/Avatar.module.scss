@@ -1,14 +1,21 @@
 .large,
 .small {
 	border-radius: 9999px;
+	aspect-ratio: 1;
 }
 
 .small {
 	width: 45px;
-	height: 45px;
+	// height: 45px;
 }
 
 .large {
 	width: 200px;
-	height: 200px;
+	// height: 200px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+	.large {
+		width: 150px;
+	}
 }

@@ -13,7 +13,12 @@ function Nav() {
 	const { data: session } = useSession();
 
 	return (
-		<Group position="right" m="md" mb="xl">
+		<Group
+			position="right"
+			m="md"
+			mb="xl"
+			// sx={() => ({ width: "fit-content" })}
+		>
 			<Link href="/" passHref>
 				<Button component="a">Home</Button>
 			</Link>
