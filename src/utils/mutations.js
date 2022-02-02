@@ -45,6 +45,7 @@ export const ADD_WISH = gql`
 export const MARK_AS_DONE = gql`
 	mutation MarkWishDone($wishId: String!) {
 		markWishDone(wishId: $wishId) {
+			id
 			wishText
 			isCompleted
 		}
