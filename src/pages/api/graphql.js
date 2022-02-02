@@ -4,7 +4,7 @@ import Cors from "micro-cors";
 
 import typeDefs from "../../../server/schemas/typeDefs";
 import resolvers from "../../../server/schemas/resolvers";
-import "../../../server/config/connection";
+// import "../../../server/config/connection";
 
 export const schema = makeExecutableSchema({
 	typeDefs,

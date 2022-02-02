@@ -30,7 +30,7 @@ const wishSchema = new mongoose.Schema(
 	{
 		collection: "Wish",
 		// toJSON: {
-		// 	getters: true,
+		// 	getters: true,	
 		// },
 	}
 );
