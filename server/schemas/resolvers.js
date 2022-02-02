@@ -56,9 +56,6 @@ const resolvers = {
 			return { user };
 		},
 		addWish: async (parent, { wishText, userId }, context) => {
-			console.log("adding wish...");
-			// console.log(args);
-			// if (context.user) {
 			const wish = await Wish.create({
 				wishText,
 			});
