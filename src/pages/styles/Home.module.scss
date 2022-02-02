@@ -40,12 +40,6 @@
 	aspect-ratio: 1;
 	transform: rotate(45deg);
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.527);
-
-	// &::before {
-	// 	position: absolute;
-	// 	transform: rotate(45deg) translateY(-50%);
-	// 	content: "";
-	// }
 }
 
 .hero_image_inner {
@@ -56,38 +50,11 @@
 	transform: rotate(-45deg);
 }
 
-.bubble {
-	width: 16em;
-	padding: 10px;
-	background-color: #313131;
-	border-radius: 7px;
-	font-weight: 100;
-
-	&:nth-child(even) {
-		&::before {
-			// content: url(/images/phineas.png);
-			background-image: url("/images/phineas.png");
-			background-size: contain;
-			width: 25px;
-			aspect-ratio: 1;
-		}
-		text-align: right;
-	}
-}
-
 .gradient_text {
 	background: #3494e6;
 	background: linear-gradient(to right, #3da5ff, #ff7abc);
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
-}
-
-.avatar {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	border-radius: 999px;
-	border: solid 3px dodgerblue;
 }
 
 .sign_in {
