@@ -51,6 +51,8 @@ function Bucket(props) {
 	};
 
 	const optimisticSetDone = (newDone) => {
+		console.log("trying to be optimistic");
+		setTodos((prev) => prev.filter((todo) => todo.id !== newDone.id));
 		setDones([...dones, newDone]);
 	};
 
