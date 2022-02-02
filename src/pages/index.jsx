@@ -22,6 +22,7 @@ function Home() {
 	return (
 		<div className={styles.hero}>
 			<motion.div
+				className={styles.call_to_action}
 				initial={{ opacity: 0, x: -150 }}
 				animate={{ opacity: 1, x: 0 }}
 				transition={{ duration: 1 }}
@@ -51,7 +52,11 @@ function Home() {
 			>
 				<div className={styles.hero_image_inner}>
 					{suggestions.map((_val, i) => (
-						<PFSuggestion image={i % 2 === 0 ? PHINEAS : FERB} text={_val} />
+						<PFSuggestion
+							key={`pf-${i}`}
+							image={i % 2 === 0 ? PHINEAS : FERB}
+							text={_val}
+						/>
 					))}
 				</div>
 			</motion.div>

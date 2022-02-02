@@ -110,3 +110,24 @@
 		box-shadow: 0 0 10px #313131;
 	}
 }
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+	.hero_image {
+		display: none;
+	}
+
+	.call_to_action {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		h1 {
+			font-size: 26px;
+		}
+
+		p {
+			width: 90%;
+			text-align: center;
+		}
+	}
+}
