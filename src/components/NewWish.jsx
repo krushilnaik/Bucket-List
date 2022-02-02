@@ -5,7 +5,7 @@ import { gql, useMutation } from "@apollo/client";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 
-function NewWish() {
+function NewWish({ callback }) {
 	const { data: session, status } = useSession();
 	const [wishText, setWishText] = useState("");
 
@@ -45,9 +45,10 @@ function NewWish() {
 			/>
 			<button
 				type="submit"
-				onClick={(event) => {
+				onClick={async (event) => {
 					event.preventDefault();
-					addWish();
+					const newWish = await addWish();
+					callback(newWish);
 				}}
 			>
 				<FaPlusCircle />
