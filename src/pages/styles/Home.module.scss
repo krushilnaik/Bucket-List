@@ -33,7 +33,10 @@
 
 .gradient_square {
 	position: absolute;
-	background-image: linear-gradient(to right, #544a7d, #d84747);
+	background: #d84747;
+	background: -moz-linear-gradient(to right, #544a7d, #d84747);
+	background: -webkit-linear-gradient(to right, #544a7d, #d84747);
+	background: linear-gradient(to right, #544a7d, #d84747);
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.527);
 	width: 400px;
 	aspect-ratio: 1;
@@ -58,6 +61,8 @@
 
 .gradient_text {
 	background: #3494e6;
+	background: -moz-linear-gradient(to right, #3da5ff, #ff7abc);
+	background: -webkit-linear-gradient(to right, #3da5ff, #ff7abc);
 	background: linear-gradient(to right, #3da5ff, #ff7abc);
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
