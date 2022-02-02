@@ -3,6 +3,7 @@ import { signIn } from "next-auth/react";
 import { FaFillDrip } from "react-icons/fa";
 import PFSuggestion from "../components/PFSuggestion";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const suggestions = [
 	"Building a rocket",
@@ -21,18 +22,17 @@ const FERB = "/images/ferb.jpg";
 function Home() {
 	return (
 		<div className={styles.hero}>
-			<motion.div
+			<div
 				className={styles.call_to_action}
-				initial={{ opacity: 0, x: -150 }}
-				animate={{ opacity: 1, x: 0 }}
-				transition={{ duration: 1 }}
+				// initial={false}
+				// transition={{ duration: 1 }}
 			>
-				<h1>
+				<motion.h1 layoutId="header" transition={{ duration: 0.5 }}>
 					<div>
 						Welcome to <span className={styles.gradient_text}>Bucket List</span>
 					</div>
 					<FaFillDrip />
-				</h1>
+				</motion.h1>
 				<h2>Your before-I-die's in one place</h2>
 				<p>
 					Just about everyone has a bucket list, at least in their heads. But
@@ -40,26 +40,29 @@ function Home() {
 					<span className={styles.gradient_text}>BucketList</span> can be used
 					as a reminder and also a motivator!
 				</p>
-				<button className={styles.sign_in} onClick={() => signIn()}>
-					Sign up
-				</button>
-			</motion.div>
-			<motion.div
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{ duration: 1, delay: 0.5 }}
-				className={styles.hero_image}
-			>
-				<div className={styles.hero_image_inner}>
-					{suggestions.map((_val, i) => (
-						<PFSuggestion
-							key={`pf-${i}`}
-							image={i % 2 === 0 ? PHINEAS : FERB}
-							text={_val}
-						/>
-					))}
+				<Link href="/auth/sign_in">
+					<button className={styles.sign_in}>Sign up</button>
+				</Link>
+			</div>
+			<div className={styles.container}>
+				<motion.div
+					layoutId="hero_gradient"
+					initial={false}
+					animate={{ rotate: 135 }}
+					className={styles.gradient_square}
+				></motion.div>
+				<div className={styles.hero_image}>
+					<div className={styles.hero_image_inner}>
+						{suggestions.map((_val, i) => (
+							<PFSuggestion
+								key={`pf-${i}`}
+								image={i % 2 === 0 ? PHINEAS : FERB}
+								text={_val}
+							/>
+						))}
+					</div>
 				</div>
-			</motion.div>
+			</div>
 		</div>
 	);
 }

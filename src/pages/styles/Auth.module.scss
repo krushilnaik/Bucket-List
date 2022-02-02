@@ -1,0 +1,81 @@
+.gradient_text {
+	background: #3494e6;
+	background: linear-gradient(to right, #3da5ff, #ff7abc);
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.auth_links {
+	position: relative;
+	width: 400px;
+	height: 400px;
+	display: flex;
+	gap: 15px;
+	padding: 50px;
+	flex-direction: column;
+	align-items: center;
+	place-content: center;
+}
+
+.gradient_square {
+	position: absolute;
+	background-image: linear-gradient(to right, #544a7d, #d84747);
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.527);
+	width: 400px;
+	aspect-ratio: 1;
+	z-index: -1;
+	border-radius: 10px;
+}
+
+.header {
+	position: relative;
+	color: honeydew;
+	background-color: rgba($color: darkslateblue, $alpha: 0.4);
+	border-radius: 9999px;
+	padding: 2px 35px 2px 15px;
+	width: fit-content;
+	margin-bottom: -15px;
+
+	svg {
+		position: absolute;
+		top: -15px;
+		right: -15px;
+		font-size: 40px;
+	}
+}
+
+.center {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 75vh;
+}
+
+.button {
+	align-self: stretch;
+	padding: 10px 15px;
+	font-size: 20px;
+	border-radius: 999px;
+	border: none;
+	cursor: pointer;
+	color: honeydew;
+	filter: brightness(1);
+	transition: filter 300ms;
+
+	&:hover {
+		filter: brightness(1.25);
+	}
+
+	&[data-provider="google"] {
+		background-color: #ff6347;
+	}
+
+	&[data-provider="facebook"] {
+		background-color: #1e90ff;
+	}
+
+	&[data-provider="github"] {
+		background-color: #2e2e2e;
+	}
+}
