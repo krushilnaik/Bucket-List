@@ -32,3 +32,21 @@ export const ADD_WISH = gql`
 		}
 	}
 `;
+
+// export const ADD_WISH = gql`
+// 	mutation addWish($wishText: String!, $userId: String!) {
+// 		addWish(wishText: $wishText, userId: $userId) {
+// 			wishText
+// 			isCompleted
+// 		}
+// 	}
+// `;
+
+export const MARK_AS_DONE = gql`
+	mutation MarkWishDone($wishId: String!) {
+		markWishDone(wishId: $wishId) {
+			wishText
+			isCompleted
+		}
+	}
+`;
