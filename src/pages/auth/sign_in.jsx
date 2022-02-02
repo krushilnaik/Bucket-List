@@ -1,3 +1,4 @@
+import { useMediaQuery } from "@mantine/hooks";
 import { motion } from "framer-motion";
 import { getProviders, signIn } from "next-auth/react";
 import { FaFillDrip } from "react-icons/fa";
@@ -5,13 +6,15 @@ import { FaFillDrip } from "react-icons/fa";
 import styles from "../styles/Auth.module.scss";
 
 export default function SignIn({ providers }) {
+	const isMobile = useMediaQuery("(max-width: 768px)");
+
 	return (
 		<div className={styles.center}>
 			<motion.h1
 				className={styles.header}
 				layoutId="header"
 				initial={false}
-				animate={{ scale: 1.1 }}
+				animate={{ scale: isMobile ? 0.9 : 1.1 }}
 				transition={{ duration: 0.5 }}
 			>
 				<div>

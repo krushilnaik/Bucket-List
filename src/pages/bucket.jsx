@@ -58,7 +58,12 @@ function Bucket(props) {
 					animate={{ y: 0, opacity: 1 }}
 					transition={{ type: "spring", stiffness: 200, delay: 0.3 }}
 				>
-					<Text size="xl" align="center" weight="bold">
+					<Text
+						size="xl"
+						align="center"
+						weight="bold"
+						sx={(theme) => ({ color: theme.colors.gray[0] })}
+					>
 						Your Bucket
 					</Text>
 				</motion.div>
