@@ -9,6 +9,14 @@ export default NextAuth({
 	session: {
 		strategy: "jwt",
 	},
+	jwt: {
+		// A secret to use for key generation. Defaults to the top-level `secret`.
+		secret: "INp8IvdIyeMcoGAgFGoA61DdBglwwSqnXJZkgz8PSnw",
+		// The maximum age of the NextAuth.js issued JWT in seconds.
+		// Defaults to `session.maxAge`.
+		maxAge: 60 * 60 * 24 * 30,
+	},
+	secret: process.env.NEXTAUTH_SECRET,
 	adapter: MongoDBAdapter(clientPromise, {
 		collections: {
 			Users: "User",
