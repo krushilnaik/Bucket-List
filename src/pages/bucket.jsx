@@ -1,14 +1,14 @@
 import { Group, Tabs, Text } from "@mantine/core";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Reorder } from "framer-motion";
-import styles from "./styles/Bucket.module.scss";
 import Wish from "../components/Wish";
 import NewWish from "../components/NewWish";
 import Avatar from "../components/Avatar";
 import { getSession, useSession } from "next-auth/react";
 import apolloClient from "../lib/apollo";
 import { QUERY_USER } from "../utils/queries";
+
+import styles from "./styles/Bucket.module.scss";
 
 export const getServerSideProps = async (ctx) => {
 	const session = await getSession(ctx);
@@ -33,12 +33,22 @@ function Bucket(props) {
 	const [todos, setTodos] = useState(
 		wishes.filter((wish) => !wish.isCompleted)
 	);
+
 	const [dones, setDones] = useState(wishes.filter((wish) => wish.isCompleted));
 	const { data: session, status } = useSession();
 
 	if (status === "loading") {
 		return <div>loading...</div>;
 	}
+
+	const optimisticAddWish = (newWish) => {
+		console.log([...todos, newWish]);
+		setTodos([...todos, newWish]);
+	};
+
+	const optimisticSetDone = () => {
+		// work in progress
+	};
 
 	return (
 		<Group direction="row" spacing={30} position="center" align="flex-start">
@@ -64,7 +74,7 @@ function Bucket(props) {
 					<Tabs.Tab label="To do" color="cyan">
 						<section className={styles.section}>
 							<div className={styles.bucket}>
-								<NewWish />
+								<NewWish callback={optimisticAddWish} />
 								{todos.map((item) => (
 									<Wish key={item.id} item={item.wishText} />
 								))}
@@ -73,9 +83,11 @@ function Bucket(props) {
 					</Tabs.Tab>
 					<Tabs.Tab label="Done" color="orange">
 						<section className={styles.section}>
-							{dones.map((item) => (
-								<Wish key={item.id} item={item.wishText} />
-							))}
+							<div className={styles.bucket}>
+								{dones.map((item) => (
+									<Wish key={item.id} item={item.wishText} />
+								))}
+							</div>
 						</section>
 					</Tabs.Tab>
 				</Tabs>
