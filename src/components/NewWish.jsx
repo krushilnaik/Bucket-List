@@ -1,7 +1,35 @@
 import { FaPlusCircle } from "react-icons/fa";
 import styles from "./styles/NewWish.module.scss";
+import { gql, useMutation } from "@apollo/client";
+// import { ADD_WISH } from "../utils/mutations";
+import { useState } from "react";
+import { useSession } from "next-auth/react";
 
 function NewWish() {
+	const { data: session, status } = useSession();
+	const [wishText, setWishText] = useState("");
+
+	if (status !== "loading") {
+		console.log(session);
+	}
+
+	const ADD_WISH = gql`
+		mutation Mutation($wishText: String!, $userId: String!) {
+			addWish(wishText: $wishText, userId: $userId) {
+				wishText
+				isCompleted
+			}
+		}
+	`;
+
+	const [addWish, { data, loading, error }] = useMutation(ADD_WISH, {
+		variables: { wishText, userId: session.user.id },
+	});
+
+	if (error) {
+		console.log(error);
+	}
+
 	/**
 	 * TODO: hook this up to the addWish GraphQL mutation
 	 */
@@ -12,8 +40,16 @@ function NewWish() {
 				name="new_wish"
 				id="new_wish"
 				placeholder="Add something:"
+				value={wishText}
+				onChange={(event) => setWishText(event.currentTarget.value)}
 			/>
-			<button type="submit">
+			<button
+				type="submit"
+				onClick={(event) => {
+					event.preventDefault();
+					addWish();
+				}}
+			>
 				<FaPlusCircle />
 			</button>
 		</form>

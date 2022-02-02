@@ -56,15 +56,16 @@ const resolvers = {
 			//   const token = signToken(user);
 			return { user };
 		},
-		addWish: async (parent, args, context) => {
+		addWish: async (parent, { wishText, userId }, context) => {
+			console.log("adding wish...");
+			// console.log(args);
 			// if (context.user) {
 			const wish = await Wish.create({
-				...args,
-				// name: context.user.name,
+				wishText,
 			});
 
 			await User.findByIdAndUpdate(
-				{ _id: mongoose.Types.ObjectId(args.userId) },
+				{ _id: mongoose.Types.ObjectId(userId) },
 				{ $push: { wishes: mongoose.Types.ObjectId(wish.id) } },
 				{ new: true }
 			);

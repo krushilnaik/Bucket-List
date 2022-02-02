@@ -63,31 +63,19 @@ function Bucket(props) {
 				<Tabs grow>
 					<Tabs.Tab label="To do" color="cyan">
 						<section className={styles.section}>
-							<Reorder.Group
-								axis="y"
-								onReorder={setTodos}
-								className={styles.bucket}
-								values={todos}
-							>
+							<div className={styles.bucket}>
 								<NewWish />
 								{todos.map((item) => (
 									<Wish key={item.id} item={item.wishText} />
 								))}
-							</Reorder.Group>
+							</div>
 						</section>
 					</Tabs.Tab>
 					<Tabs.Tab label="Done" color="orange">
 						<section className={styles.section}>
-							<Reorder.Group
-								axis="y"
-								onReorder={setDones}
-								className={styles.bucket}
-								values={dones}
-							>
-								{dones.map((item) => (
-									<Wish key={item.id} item={item.wishText} />
-								))}
-							</Reorder.Group>
+							{dones.map((item) => (
+								<Wish key={item.id} item={item.wishText} />
+							))}
 						</section>
 					</Tabs.Tab>
 				</Tabs>

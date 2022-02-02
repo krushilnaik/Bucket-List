@@ -20,9 +20,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
 	];
 
 	return (
-		<SessionProvider session={session}>
-			<MantineProvider theme={{ colorScheme: "dark" }}>
-				<ApolloProvider client={apolloClient}>
+		<ApolloProvider client={apolloClient}>
+			<SessionProvider session={session}>
+				<MantineProvider theme={{ colorScheme: "dark" }}>
 					<div className="container">
 						<Nav />
 						<div className="content">
@@ -57,9 +57,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
 							}}
 						/>
 					</svg>
-				</ApolloProvider>
-			</MantineProvider>
-		</SessionProvider>
+				</MantineProvider>
+			</SessionProvider>
+		</ApolloProvider>
 	);
 }
 

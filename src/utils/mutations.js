@@ -25,12 +25,10 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_WISH = gql`
-	mutation addWish($wishText: String!) {
-		addWish(wishText: $wishText) {
-			_id
+	mutation addWish($wishText: String!, $userId: String!) {
+		addWish(wishText: $wishText, userId: $userId) {
 			wishText
-			createdAt
-			name
+			isCompleted
 		}
 	}
 `;
