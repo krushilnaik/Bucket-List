@@ -54,13 +54,6 @@ function Home() {
 						<PFSuggestion image={i % 2 === 0 ? PHINEAS : FERB} text={_val} />
 					))}
 				</div>
-				{/* <PFSuggestion>Fighting a mummy</PFSuggestion>
-				<PFSuggestion>Climbing up the Eiffel Tower</PFSuggestion>
-				<PFSuggestion>Discovering something that doesn't exist</PFSuggestion>
-				<PFSuggestion>Giving a monkey a shower</PFSuggestion>
-				<PFSuggestion>Surfing tidal waves</PFSuggestion>
-				<PFSuggestion>Creating nanobots</PFSuggestion>
-				<PFSuggestion>Locating Frankenstein's brain</PFSuggestion> */}
 			</motion.div>
 		</div>
 	);
