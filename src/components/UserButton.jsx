@@ -38,4 +38,6 @@ const UserButton = forwardRef(
 	)
 );
 
+UserButton.displayName = "UserButton";
+
 export default UserButton;
