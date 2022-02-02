@@ -39,8 +39,9 @@ function Nav() {
 					</Menu.Item>
 				</Menu>
 			) : (
-				<Link href="/auth/sign_in">
+				<Link href="/auth/sign_in" passHref>
 					<Button
+						component="a"
 						sx={() => ({
 							width: 45,
 							height: 45,

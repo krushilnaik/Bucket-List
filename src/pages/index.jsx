@@ -33,14 +33,14 @@ function Home() {
 					</div>
 					<FaFillDrip />
 				</motion.h1>
-				<h2>Your before-I-die's in one place</h2>
+				<h2>Your before-I-die&apos;s in one place</h2>
 				<p>
 					Just about everyone has a bucket list, at least in their heads. But
 					not many have a visual copy.{" "}
 					<span className={styles.gradient_text}>BucketList</span> can be used
 					as a reminder and also a motivator!
 				</p>
-				<Link href="/auth/sign_in">
+				<Link href="/auth/sign_in" passHref>
 					<button className={styles.sign_in}>Sign up</button>
 				</Link>
 			</div>

@@ -1,21 +1,7 @@
 import { forwardRef } from "react";
-import { Avatar, Group, Space, Text, UnstyledButton } from "@mantine/core";
-import { BsChevronRight } from "react-icons/bs";
-// import Avatar from "./Avatar";
+import { Avatar, Group, Text } from "@mantine/core";
 
 const PFSuggestion = forwardRef(({ image, text, ...others }, ref) => (
-	// <UnstyledButton
-	// 	ref={ref}
-	// 	sx={(theme) => ({
-	// 		padding: "5px",
-	// 		borderRadius: 7,
-	// 		backgroundColor: theme.colors.blue[8],
-	// 		"&:hover": {
-	// 			backgroundColor: theme.colors.blue[9],
-	// 		},
-	// 	})}
-	// 	{...others}
-	// >
 	<Group
 		sx={() => ({
 			backgroundColor: "darkslateblue",
@@ -38,7 +24,8 @@ const PFSuggestion = forwardRef(({ image, text, ...others }, ref) => (
 			</Text>
 		</div>
 	</Group>
-	// </UnstyledButton>
 ));
+
+PFSuggestion.displayName = "PFSuggestion";
 
 export default PFSuggestion;
