@@ -6,7 +6,28 @@
 .bucket {
 	margin: 0;
 	padding: 0;
+	max-height: 500px;
+	overflow-y: scroll;
+	padding-right: 5px;
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+
+	&::-webkit-scrollbar {
+		width: 7px;
+
+		&-track {
+			border-radius: 999px;
+			background: #00000048;
+		}
+
+		&-thumb {
+			border-radius: 999px;
+			background: #f1f1f1;
+
+			&:hover {
+				background: #f87171;
+			}
+		}
+	}
 }
