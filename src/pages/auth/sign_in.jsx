@@ -5,6 +5,13 @@ import { FaFillDrip } from "react-icons/fa";
 
 import styles from "../styles/Auth.module.scss";
 
+export async function getServerSideProps(context) {
+	const providers = await getProviders();
+	return {
+		props: { providers },
+	};
+}
+
 export default function SignIn({ providers }) {
 	const isMobile = useMediaQuery("(max-width: 768px)");
 
@@ -43,12 +50,4 @@ export default function SignIn({ providers }) {
 			</div>
 		</div>
 	);
-}
-
-// This is the recommended way for Next.js 9.3 or newer
-export async function getServerSideProps(context) {
-	const providers = await getProviders();
-	return {
-		props: { providers },
-	};
 }

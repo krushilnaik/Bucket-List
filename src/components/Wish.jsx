@@ -14,7 +14,9 @@ function Wish(props) {
 	}
 
 	const handleClick = async () => {
-		await markDone();
+		const moddedWish = await markDone();
+
+		callback(moddedWish.data.markWishDone);
 	};
 
 	return (

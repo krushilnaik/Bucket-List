@@ -13,6 +13,15 @@ import styles from "./styles/Bucket.module.scss";
 export const getServerSideProps = async (ctx) => {
 	const session = await getSession(ctx);
 
+	if (!session) {
+		return {
+			redirect: {
+				destination: "/locked",
+			},
+			props: {},
+		};
+	}
+
 	const { data } = await apolloClient.query({
 		query: QUERY_USER,
 		variables: {
@@ -22,7 +31,6 @@ export const getServerSideProps = async (ctx) => {
 
 	return {
 		props: {
-			loggedIn: session ? true : false,
 			wishes: data.user.wishes,
 			userImage: session.user.image,
 		},
@@ -30,27 +38,20 @@ export const getServerSideProps = async (ctx) => {
 };
 
 function Bucket(props) {
-	const { wishes, userImage, loggedIn } = props;
-
-	console.log(loggedIn);
+	const { wishes, userImage } = props;
 
 	const [todos, setTodos] = useState(
 		wishes.filter((wish) => !wish.isCompleted)
 	);
 
 	const [dones, setDones] = useState(wishes.filter((wish) => wish.isCompleted));
-	// const { data: session, status } = useSession();
-
-	// if (status === "loading") {
-	// 	return <div>loading...</div>;
-	// }
 
 	const optimisticAddWish = (newWish) => {
 		setTodos([...todos, newWish]);
 	};
 
-	const optimisticSetDone = () => {
-		// work in progress
+	const optimisticSetDone = (newDone) => {
+		setDones([...dones, newDone]);
 	};
 
 	return (
@@ -84,7 +85,12 @@ function Bucket(props) {
 							<div className={styles.bucket}>
 								<NewWish callback={optimisticAddWish} />
 								{todos.map((item) => (
-									<Wish key={item.id} wishId={item.id} item={item.wishText} />
+									<Wish
+										key={item.id}
+										wishId={item.id}
+										item={item.wishText}
+										callback={optimisticSetDone}
+									/>
 								))}
 							</div>
 						</section>
