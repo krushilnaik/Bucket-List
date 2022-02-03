@@ -1,4 +1,5 @@
 import { useMutation } from "@apollo/client";
+import { FaCheckDouble } from "react-icons/fa";
 import { MARK_AS_DONE } from "../utils/mutations";
 import styles from "./styles/Wish.module.scss";
 
@@ -24,7 +25,9 @@ function Wish(props) {
 
 	return (
 		<div className={styles.wish}>
-			<button onClick={handleClick}>x</button>
+			<button onClick={handleClick}>
+				<FaCheckDouble />
+			</button>
 			<span>{item}</span>
 		</div>
 	);
