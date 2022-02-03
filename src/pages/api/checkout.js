@@ -30,8 +30,6 @@ function formatAmountForStripe(amount) {
 export default async function handler(req, res) {
 	const session = await getSession({ req });
 
-	// console.log(session);
-
 	if (!session) {
 		res.status(401).send("You need to be signed in to do that");
 	}
