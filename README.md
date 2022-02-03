@@ -1,5 +1,5 @@
 <p align="center">
-	<a href="https://bucket-list.heroku.app/">
+	<a href="https://bucket-list-rutgers.herokuapp.com/">
 		<img src="https://i.imgur.com/nT9LavM.png" height="40" />
 	</a>
 </p>
