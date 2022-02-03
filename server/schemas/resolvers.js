@@ -33,28 +33,6 @@ const resolvers = {
 	},
 
 	Mutation: {
-		addUser: async (parent, args) => {
-			const user = await User.create(args);
-			//   const token = signToken(user);
-
-			return user;
-		},
-		login: async (parent, { email, password }) => {
-			const user = await User.findOne({ email });
-
-			if (!user) {
-				throw new AuthenticationError("Incorrect credentials");
-			}
-
-			const correctPw = await user.isCorrectPassword(password);
-
-			if (!correctPw) {
-				throw new AuthenticationError("Incorrect credentials");
-			}
-
-			//   const token = signToken(user);
-			return { user };
-		},
 		addWish: async (parent, { wishText, userId }, context) => {
 			const wish = await Wish.create({
 				wishText,
@@ -67,9 +45,16 @@ const resolvers = {
 			);
 
 			return wish;
-			// }
+		},
+		markWishDone: async (parent, { wishId }, context) => {
+			const updatedWish = await Wish.findByIdAndUpdate(
+				{ _id: mongoose.Types.ObjectId(wishId) },
+				{
+					isCompleted: true,
+				}
+			);
 
-			// throw new AuthenticationError("You need to be logged in!");
+			return updatedWish;
 		},
 	},
 };
