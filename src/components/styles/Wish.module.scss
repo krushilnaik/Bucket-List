@@ -18,4 +18,23 @@
 		transform: rotate(90deg);
 		cursor: grab;
 	}
+
+	button {
+		display: grid;
+		cursor: pointer;
+		place-content: center;
+		border: none;
+		color: green;
+		background-color: lightgreen;
+		filter: drop-shadow(0 0 2px black);
+		border-radius: 999px;
+		width: 30px;
+		height: 30px;
+		transition: background-color 300ms, color 300ms;
+
+		&:hover {
+			background-color: lightgreen;
+			color: green;
+		}
+	}
 }
